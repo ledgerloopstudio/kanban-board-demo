@@ -335,7 +335,7 @@ body[data-view="board"] #dashWrap{display:none}
 </style>
 </head>
 <body>
-<div class="demo-banner" id="demoBanner">DEMO — example data, add up to 50 cards and see whether it thinks the way you do. Nothing is saved permanently and it can reset any time. <a href="https://www.etsy.com/shop/LedgerLoopStudio" target="_blank" rel="noopener">Buy the full version</a> for your own unlimited, permanent copy.<button class="x" onclick="document.getElementById('demoBanner').style.display='none'" aria-label="Dismiss">✕</button></div>
+<div class="demo-banner" id="demoBanner">DEMO — example data, add up to 15 of your own cards and see whether it thinks the way you do. Nothing is saved permanently and it can reset any time. <a href="https://www.etsy.com/shop/LedgerLoopStudio" target="_blank" rel="noopener">Buy the full version</a> for your own unlimited, permanent copy.<button class="x" onclick="document.getElementById('demoBanner').style.display='none'" aria-label="Dismiss">✕</button></div>
 
 <div id="topbar">
   <div id="brand"><span class="mark"></span>Kanban Board</div>
@@ -481,7 +481,7 @@ var STYLES = [
 /* ============================================================ state */
 var DB = null;
 /* ---- demo-only limit: this block exists only in the public try-it demo, never in the sold product ---- */
-var DEMO_MODE = true, DEMO_CARD_LIMIT = 50;
+var DEMO_MODE = true, DEMO_CARD_LIMIT = 21; /* 6 seeded + 15 room to try adding your own */
 function demoLimitReached(){
   if(!DEMO_MODE) return false;
   if(!DB || !DB.cards || DB.cards.length < DEMO_CARD_LIMIT) return false;
