@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kanban Board — LedgerLoopStudio</title>
+<title>Kanban Board â LedgerLoopStudio</title>
 <style>
 :root{
   --ink:#1B2A36; --grey:#5A6B78; --rule:#E2E6E9; --band:#FAFBFC;
@@ -332,20 +332,21 @@ body[data-view="board"] #dashWrap{display:none}
 .demo-banner a{color:#fff;text-decoration:underline}
 .demo-banner .x{position:absolute;right:10px;top:6px;background:none;border:none;color:#fff;font:inherit;cursor:pointer;opacity:.85;padding:4px 8px}
 .demo-banner .x:hover{opacity:1}
+.buildstamp{max-width:1180px;margin:0 auto;padding:4px 22px 30px;color:#8A9AA5;font-size:11px;letter-spacing:.04em;text-align:right}
 </style>
 </head>
 <body>
-<div class="demo-banner" id="demoBanner">DEMO — example data, add up to 15 of your own cards and see whether it thinks the way you do. Nothing is saved permanently and it can reset any time. <a href="https://www.etsy.com/shop/LedgerLoopStudio" target="_blank" rel="noopener">Buy the full version</a> for your own unlimited, permanent copy.<button class="x" onclick="document.getElementById('demoBanner').style.display='none'" aria-label="Dismiss">✕</button></div>
+<div class="demo-banner" id="demoBanner">DEMO â example data, add up to 15 of your own cards and see whether it thinks the way you do. Nothing is saved permanently and it can reset any time. <a href="https://www.etsy.com/shop/LedgerLoopStudio" target="_blank" rel="noopener">Buy the full version</a> for your own unlimited, permanent copy.<button class="x" onclick="document.getElementById('demoBanner').style.display='none'" aria-label="Dismiss">â</button></div>
 
 <div id="topbar">
   <div id="brand"><span class="mark"></span>Kanban Board</div>
   <div id="boardTabs"></div>
   <button id="addBoardBtn" title="New board">+</button>
-  <button class="topbtn" id="styleBtn">🎨 Style</button>
-  <button class="topbtn" id="themeBtn">🌙 Dark</button>
-  <button class="topbtn" id="printBtn">🖨 Print</button>
-  <button class="topbtn" id="exportBtn">⬇ Backup</button>
-  <button class="topbtn" id="importBtn">⬆ Restore</button>
+  <button class="topbtn" id="styleBtn">ð¨ Style</button>
+  <button class="topbtn" id="themeBtn">ð Dark</button>
+  <button class="topbtn" id="printBtn">ð¨ Print</button>
+  <button class="topbtn" id="exportBtn">â¬ Backup</button>
+  <button class="topbtn" id="importBtn">â¬ Restore</button>
   <input type="file" id="importFile" accept="application/json" style="display:none">
   <button class="topbtn accent" id="helpBtn">?</button>
 </div>
@@ -366,7 +367,7 @@ body[data-view="board"] #dashWrap{display:none}
     <button id="viewBoard" class="on">Board</button>
     <button id="viewDash">Dashboard</button>
   </div>
-  <input type="search" id="searchBox" placeholder="Search cards…">
+  <input type="search" id="searchBox" placeholder="Search cardsâ¦">
   <select id="filterPriority">
     <option value="">All priorities</option>
     <option value="low">Low</option>
@@ -375,7 +376,7 @@ body[data-view="board"] #dashWrap{display:none}
     <option value="urgent">Urgent</option>
   </select>
   <select id="filterLabel"><option value="">All labels</option></select>
-  <button class="chip-toggle" id="filterOverdue">⚠ Overdue only</button>
+  <button class="chip-toggle" id="filterOverdue">â  Overdue only</button>
   <div id="stats">
     <span>Cards <b id="statCards">0</b></span>
     <span class="warn">Overdue <b id="statOverdue">0</b></span>
@@ -394,7 +395,7 @@ body[data-view="board"] #dashWrap{display:none}
   <div class="modal">
     <div class="modal-head">
       <h3 id="cardModalTitle">Card</h3>
-      <button class="modal-close" id="cardModalClose">×</button>
+      <button class="modal-close" id="cardModalClose">Ã</button>
     </div>
     <div class="modal-body">
       <div class="field"><label>Title</label><input type="text" id="f-title" placeholder="e.g. Send draft to client"></div>
@@ -416,7 +417,7 @@ body[data-view="board"] #dashWrap{display:none}
         <label>Labels</label>
         <div class="lbl-row" id="f-labels"></div>
       </div>
-      <div class="field"><label>Notes</label><textarea id="f-desc" placeholder="Details, links, context…"></textarea></div>
+      <div class="field"><label>Notes</label><textarea id="f-desc" placeholder="Details, links, contextâ¦"></textarea></div>
       <div class="field">
         <label>Checklist</label>
         <div class="chk-list" id="f-checklist"></div>
@@ -485,7 +486,7 @@ var DEMO_MODE = true, DEMO_CARD_LIMIT = 21; /* 6 seeded + 15 room to try adding 
 function demoLimitReached(){
   if(!DEMO_MODE) return false;
   if(!DB || !DB.cards || DB.cards.length < DEMO_CARD_LIMIT) return false;
-  alert("You've reached the "+DEMO_CARD_LIMIT+"-card demo limit.\n\nThis is just a preview — buy the full version for unlimited cards, all features unlocked, and your own permanent copy.");
+  alert("You've reached the "+DEMO_CARD_LIMIT+"-card demo limit.\n\nThis is just a preview â buy the full version for unlimited cards, all features unlocked, and your own permanent copy.");
   return true;
 }
 var state = { activeBoard:null, view:"board", search:"", filterPriority:"", filterLabel:"", filterOverdue:false,
@@ -547,9 +548,9 @@ function seedIfEmpty(){
     {id:uid(), boardId:b1, columnId:c1, title:"Draft Q3 content calendar", client:"", due:"", priority:"low", labels:["Internal"], desc:"", checklist:[], order:0},
     {id:uid(), boardId:b1, columnId:c2, title:"Send updated invoice", client:"Northgate Studio", due:plus(2), priority:"high", labels:["Client work"], desc:"Include the revised scope from last call.", checklist:[{text:"Attach PDF",done:false},{text:"CC accounts@",done:false}], order:0},
     {id:uid(), boardId:b1, columnId:c2, title:"Renew domain", client:"", due:plus(-1), priority:"urgent", labels:["Blocked"], desc:"", checklist:[], order:1},
-    {id:uid(), boardId:b1, columnId:c3, title:"Homepage redesign — round 2", client:"Harlow & Co.", due:plus(5), priority:"med", labels:["Client work"], desc:"Waiting on their logo files.", checklist:[{text:"Wireframe",done:true},{text:"Client review",done:true},{text:"Final polish",done:false}], order:0},
+    {id:uid(), boardId:b1, columnId:c3, title:"Homepage redesign â round 2", client:"Harlow & Co.", due:plus(5), priority:"med", labels:["Client work"], desc:"Waiting on their logo files.", checklist:[{text:"Wireframe",done:true},{text:"Client review",done:true},{text:"Final polish",done:false}], order:0},
     {id:uid(), boardId:b1, columnId:c3, title:"Fix contact form bug", client:"", due:"", priority:"high", labels:["Quick win"], desc:"", checklist:[], order:1},
-    {id:uid(), boardId:b1, columnId:c4, title:"Onboarding call — Reyes LLC", client:"Reyes LLC", due:plus(-3), priority:"med", labels:["Client work"], desc:"", checklist:[{text:"Send welcome packet",done:true}], order:0}
+    {id:uid(), boardId:b1, columnId:c4, title:"Onboarding call â Reyes LLC", client:"Reyes LLC", due:plus(-3), priority:"med", labels:["Client work"], desc:"", checklist:[{text:"Send welcome packet",done:true}], order:0}
   ];
   save();
 }
@@ -646,7 +647,7 @@ function renderTabs(){
     var el = document.createElement("div");
     el.className = "board-tab" + (b.id===state.activeBoard ? " active":"");
     el.textContent = b.name;
-    el.title = "Click to open · double-click to rename";
+    el.title = "Click to open Â· double-click to rename";
     el.addEventListener("click", function(){ state.activeBoard = b.id; save(); renderAll(); });
     el.addEventListener("dblclick", function(e){ e.stopPropagation(); renameBoard(b.id); });
     el.addEventListener("contextmenu", function(e){ e.preventDefault(); if(confirm('Delete board "'+b.name+'"?')) deleteBoard(b.id); });
@@ -674,7 +675,7 @@ function renderBoard(){
         '<span class="col-dot"></span>'+
         '<input class="col-title" value="'+esc(col.name)+'" data-col="'+col.id+'">'+
         '<span class="col-count'+(over?" over":"")+'">'+allCards.length+(col.wip>0?" / "+col.wip:"")+'</span>'+
-        '<button class="col-menu-btn" data-menu="'+col.id+'">⋯</button>'+
+        '<button class="col-menu-btn" data-menu="'+col.id+'">â¯</button>'+
       '</div>'+
       '<div class="col-wip">WIP limit <input type="number" min="0" value="'+col.wip+'" data-wip="'+col.id+'"> (0 = none)</div>'+
       '<div class="col-body" data-body="'+col.id+'"></div>'+
@@ -728,7 +729,7 @@ function renderCard(c){
     var d = daysBetween(todayISO(), c.due);
     var cls = d<0 ? "overdue" : (d<=2 ? "dueSoon" : "");
     var txt = d<0 ? Math.abs(d)+"d overdue" : (d===0 ? "Due today" : d+"d left");
-    dueBadge = '<span class="meta-pill '+cls+'">📅 '+txt+'</span>';
+    dueBadge = '<span class="meta-pill '+cls+'">ð '+txt+'</span>';
   }
   var chkDone = (c.checklist||[]).filter(function(x){return x.done;}).length;
   var chkTotal = (c.checklist||[]).length;
@@ -743,9 +744,9 @@ function renderCard(c){
     '<div class="pri" style="background:'+pri.color+'"></div>'+
     (labelsHtml? '<div class="card-labels">'+labelsHtml+'</div>' : '')+
     '<div class="card-title">'+esc(c.title||"Untitled card")+'</div>'+
-    (c.client? '<div class="card-client">👤 '+esc(c.client)+'</div>' : '')+
+    (c.client? '<div class="card-client">ð¤ '+esc(c.client)+'</div>' : '')+
     '<div class="card-meta">'+dueBadge+
-      (chkTotal? '<span class="meta-pill">☑ '+chkDone+'/'+chkTotal+'</span>':'')+
+      (chkTotal? '<span class="meta-pill">â '+chkDone+'/'+chkTotal+'</span>':'')+
     '</div>'+
     (chkTotal? '<div class="chk-bar"><div class="chk-fill" style="width:'+Math.round(100*chkDone/chkTotal)+'%"></div></div>' : '');
 
@@ -833,7 +834,7 @@ function boardStats(board, cards, today){
     overdue: overdue.length,
     dueWeek: dueWeek.length,
     completion: mine.length ? Math.round(100*done.length/mine.length) : 0,
-    doneColumnName: doneCol ? doneCol.name : "—",
+    doneColumnName: doneCol ? doneCol.name : "â",
     byColumn: byColumn,
     byPriority: byPriority,
     byClient: byClient,
@@ -881,9 +882,9 @@ function renderDashboard(){
 
   /* KPI row */
   html += '<div class="dash-grid">'+
-    kpi("Total cards", s.total, s.open+" open · "+s.done+" in "+esc(s.doneColumnName), accent)+
+    kpi("Total cards", s.total, s.open+" open Â· "+s.done+" in "+esc(s.doneColumnName), accent)+
     kpi("Completed", s.done, s.completion+"% of this board", "#12B76A")+
-    kpi("Overdue", s.overdue, s.overdue===0 ? "Nothing late — nice" : "Needs attention today", "#C0392B")+
+    kpi("Overdue", s.overdue, s.overdue===0 ? "Nothing late â nice" : "Needs attention today", "#C0392B")+
     kpi("Due next 7 days", s.dueWeek, "Open cards with a deadline", "#B9770E")+
   '</div>';
 
@@ -908,7 +909,7 @@ function renderDashboard(){
 
   /* priority mix + upcoming deadlines */
   html += '<div class="dash-row two">'+
-    '<div class="panel"><h3>Priority mix — open cards</h3>'+
+    '<div class="panel"><h3>Priority mix â open cards</h3>'+
       (priTotal ?
         '<div class="stackbar">'+ s.byPriority.map(function(p){
           return p.count ? '<span style="width:'+(100*p.count/priTotal)+'%;background:'+p.color+'" title="'+esc(p.label)+': '+p.count+'"></span>' : '';
@@ -1075,7 +1076,7 @@ function checklistRow(item, i){
   row.innerHTML =
     '<input type="checkbox" '+(item.done?"checked":"")+'>'+
     '<input type="text" value="'+esc(item.text)+'" placeholder="Checklist item">'+
-    '<button type="button" class="chk-del">×</button>';
+    '<button type="button" class="chk-del">Ã</button>';
   var cb = row.querySelector('input[type=checkbox]');
   var tx = row.querySelector('input[type=text]');
   cb.addEventListener("change", function(){ row.classList.toggle("done", cb.checked); });
@@ -1160,7 +1161,7 @@ function startPomo(){
       stopPomo();
       state.pomo.secondsLeft = 0;
       updatePomoDisplay();
-      toast("⏰ Time's up");
+      toast("â° Time's up");
       return;
     }
     updatePomoDisplay();
@@ -1211,7 +1212,7 @@ function importJSON(file){
 /* ============================================================ theme */
 function applyTheme(){
   document.documentElement.setAttribute("data-theme", DB.settings.theme);
-  document.getElementById("themeBtn").textContent = DB.settings.theme==="dark" ? "☀ Light" : "🌙 Dark";
+  document.getElementById("themeBtn").textContent = DB.settings.theme==="dark" ? "â Light" : "ð Dark";
 }
 function toggleTheme(){
   DB.settings.theme = DB.settings.theme==="dark" ? "light" : "dark";
@@ -1295,14 +1296,14 @@ function wireEvents(){
     e.target.value = "";
   });
   document.getElementById("helpBtn").addEventListener("click", function(){
-    alert("Kanban Board — quick guide\n\n"+
-      "• Click + next to the board tabs to add a new board.\n"+
-      "• Click + Add card inside any column.\n"+
-      "• Drag cards between columns.\n"+
-      "• Click a card to open it: due date, priority, labels, checklist, and a focus timer live there.\n"+
-      "• Set a WIP limit on a column to get a warning when it's over capacity.\n"+
-      "• Everything is saved to this browser automatically. Use Backup regularly — it's your file, keep a copy.\n"+
-      "• 100% offline. Nothing you type ever leaves this device.");
+    alert("Kanban Board â quick guide\n\n"+
+      "â¢ Click + next to the board tabs to add a new board.\n"+
+      "â¢ Click + Add card inside any column.\n"+
+      "â¢ Drag cards between columns.\n"+
+      "â¢ Click a card to open it: due date, priority, labels, checklist, and a focus timer live there.\n"+
+      "â¢ Set a WIP limit on a column to get a warning when it's over capacity.\n"+
+      "â¢ Everything is saved to this browser automatically. Use Backup regularly â it's your file, keep a copy.\n"+
+      "â¢ 100% offline. Nothing you type ever leaves this device.");
   });
 
   document.getElementById("viewBoard").addEventListener("click", function(){ setView("board"); });
@@ -1353,5 +1354,6 @@ if(document.readyState === "loading"){
 
 })();
 </script>
+<div class="buildstamp noprint">Kanban Board &middot; build 2026-09-18 &middot; LedgerLoopStudio</div>
 </body>
 </html>
